@@ -10,13 +10,14 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(ichthus_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 
 include_directories(include)
 
 add_library(can_record STATIC src/can_record.cpp)
 target_compile_features(can_record PRIVATE cxx_std_17)
 ament_target_dependencies(can_record rclcpp
-  ichthus_msgs)
+  ichthus_msgs std_msgs)
 target_include_directories(can_record
   PUBLIC
   # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
